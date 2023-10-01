@@ -1,6 +1,22 @@
-import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/20/solid'
+import React from 'react'
+import axios from 'axios';
+import AppConstant from '../utils/AppConstant';
 
-export default function AboutPage() {
+export default function Amrita() {
+
+  const [aboutData, setAboutData] = React.useState({})
+
+  React.useEffect(() => {
+    axios.get(AppConstant.getAbout)
+      .then(response => {
+        let data = response.data
+        setAboutData(data)
+      })
+      .catch(error => {
+        console.log(error.message)
+      })
+  }, [])
+
   return (
     <>
       <div className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
@@ -34,10 +50,18 @@ export default function AboutPage() {
           <div className="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
             <div className="lg:pr-4">
               <div className="lg:max-w-lg">
-                <p className="text-base font-semibold leading-7 text-indigo-600">AMRITA PREETAM</p>
-                <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Aaj Aakhan Waris Shah Nu</h1>
-                <p className="mt-6 text-xl leading-8 text-black-600">
-                  Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem.
+                <a href='/' className="text-base font-bold leading-7 text-indigo-600">← Move to Home</a>
+                <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{aboutData.name}</h1>
+                <p className="mt-6 text-xl font-bold leading-8 text-slate-600">
+                  {aboutData.subtitle}
+                </p>
+
+                <p className="mt-2 text-md leading-8 text-slate-600">
+                  Life: <strong>{aboutData.lifespan}</strong>
+                </p>
+
+                <p className="mt-2 text-md leading-8 text-slate-600">
+                  Born In: <strong>{aboutData.bornIn}</strong>
                 </p>
               </div>
             </div>
@@ -51,48 +75,13 @@ export default function AboutPage() {
           </div>
           <div className="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
             <div className="lg:pr-4">
-              <div className="max-w-xl text-md leading-7 text-gray-600 lg:max-w-lg">
-                <p>
-                  Ajj Aakhan Waris Shah Nuu,<br />
-                  Kiton Qabraan Wichon Bol,<br />
-                  Tey Ajj Kitaab-e-Ishq Daa,<br />
-                  Koi Agla Warka Phol<br />
-                </p>
-                <p className="mt-8">
-                  Ikk Royi Sii Dhi Punjab Di,<br />
-                  Tu Likh Likh Maarey Wain,<br />
-                  Ajj Lakhaan Dhiyan Rondiyan,<br />
-                  Tenu Waris Shah Nuu Kain
-                </p>
-                <p className="mt-8">
-                  Uthh Dard-Mandaan Diya Dardiya,<br />
-                  Utth Tak Apna Punjab<br />
-                  Ajj Bailey Lashaan Bichiyaan<br />
-                  Tey Lahoo Di Bhari Chenab<br />
-                </p>
-
-                <p className="mt-8">
-                  Kisey Ne Panjaan Paaniyan Wich
-                  Diti Zahar Rala,
-                  Tey Unhan Paniyaan Dharat Nuu
-                  Dita Paani Laa
-                </p>
-
-                <p className="mt-8">
-                  Iss Zarkhaiz Zameen Dey
-                  Loon Loon Phuttiya Zahar
-                  Gitth Gitth Charhiyaan Laaliyan
-                  Fuut Fuut Charrhiya Kaher
-                </p>
-
-                <p className="mt-8">
-                  Wey Waleesi Wha Phair,
-                  Wan Wan Wagi Jaa,
-                  Ohney Har Ikk Waans Di
-                  Wanjli Diti Naag Bana
-                </p>
-
-              </div>
+                {aboutData.content && aboutData.content.map((item) => 
+                  <div className="max-w-xl text-md leading-7 text-gray-600 lg:max-w-lg">
+                  <p className="mt-8">
+                    {item} <br />
+                  </p>
+                  </div>
+                )}
             </div>
           </div>
         </div>
