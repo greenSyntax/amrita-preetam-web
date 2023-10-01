@@ -1,12 +1,15 @@
 import React from 'react'
 import axios from 'axios';
 import AppConstant from '../utils/AppConstant';
+import {instrumentEvent} from '../utils/AppInstrumentation';
 
 export default function Amrita() {
 
   const [aboutData, setAboutData] = React.useState({})
 
   React.useEffect(() => {
+    instrumentEvent('event_amrita_about_page_shown', {})
+
     axios.get(AppConstant.getAbout)
       .then(response => {
         let data = response.data

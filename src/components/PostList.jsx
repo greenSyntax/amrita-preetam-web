@@ -3,18 +3,22 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 import Footer from './Footer';
 import AppConstant from '../utils/AppConstant';
+import {instrumentEvent} from '../utils/AppInstrumentation';
 
 export default function PostList() {
 
   const [posts, setPosts] = React.useState([])
 
   React.useEffect(() => {
+    instrumentEvent('event_list_page_shown', {})
+
     axios.get(AppConstant.getList)
       .then(response => {
         setPosts(response.data.post_data)
       })
       .catch(error => {
         console.log(error.message)
+        instrumentEvent('list_page_fail', {'error_message': error.message})
       })
   }, [])
 
