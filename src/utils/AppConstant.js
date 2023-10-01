@@ -22,7 +22,7 @@ class AppConstant {
 
     // Contact Us
     textContactUs = "Contact Us 📦"
-    textContactSubtitle = "It's an Open Project, where wr're are trying to collect some of the best Amrita Preetam's work. Make it more accessibl in digital world. If you're intrested in contributing, Please reach us out. You can mail us for other support or query. We'll try to reach you in next 24 hours."
+    textContactSubtitle = "It's an Open Project, where wr're are trying to collect some of the best Amrita Preetam's work. Make it more accessibl in digital world. If you're intrested in contributing, Please reach us out. We'll try to revert back in next 24 hours."
     textContactSentMail = "Send Mail To Team"
 };
 

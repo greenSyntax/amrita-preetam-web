@@ -34,7 +34,7 @@ export default function PostList() {
               <Link to={`/post/${post.pid}`}>
               <article key={post.pid} className="flex max-w-xl flex-col items-start justify-between">
                 <div className="flex items-center gap-x-4 text-xs">
-                  {post.date_formatted}
+                  {post.tag}
                 </div>
                 <div className="group relative">
                   <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
