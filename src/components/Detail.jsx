@@ -9,6 +9,7 @@ function Detail() {
     const params = useParams()
 
     React.useEffect(() => {
+        console.log(`🌎: ${AppConstant.getDetail}${params.postId}.json`)
         axios.get(`${AppConstant.getDetail}${params.postId}.json`)
             .then(response => {
                 let data = response.data
