@@ -2,6 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import AppConstant from '../utils/AppConstant';
+import {instrumentEvent} from '../utils/AppInstrumentation';
 
 function Detail() {
 
@@ -9,6 +10,8 @@ function Detail() {
     const params = useParams()
 
     React.useEffect(() => {
+        instrumentEvent('event_detail_page_shown', {'post_id': params.postId})
+
         console.log(`🌎: ${AppConstant.getDetail}${params.postId}.json`)
         axios.get(`${AppConstant.getDetail}${params.postId}.json`)
             .then(response => {
@@ -17,6 +20,7 @@ function Detail() {
             })
             .catch(error => {
                 console.log(error.message)
+                instrumentEvent('detail_page_fail', {'post_id': params.postId, 'error_message': error.message})
             })
     }, [])
 
