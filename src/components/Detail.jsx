@@ -46,9 +46,11 @@ function Detail() {
                             <h3 className="text-2xl font-semibold tracking-tight text-gray-600 sm:text-1xl">
                                 {postData.subtitle}
                             </h3>
+                            <br />
+                            
                             {
                                 postData.content && postData.content.map((item) => (
-                                    <section className="text-lg leading-8 text-gray-600">
+                                    <section className="text-lg font-medium leading-8 text-gray-600">
                                         {item} <br />
                                     </section>
                                 ))
