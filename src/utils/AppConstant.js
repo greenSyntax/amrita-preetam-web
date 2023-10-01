@@ -3,7 +3,7 @@ class AppConstant {
     // API
     getList = "https://raw.githubusercontent.com/greenSyntax/amrita-pritam-datastore/main/amrita-archive.json"
     getAbout = "https://raw.githubusercontent.com/greenSyntax/amrita-pritam-datastore/main/about-amrita-preetam.json"
-    getDetail = "https://raw.githubusercontent.com/greenSyntax/amrita-pritam-datastore/main/posts/" //post_1.json
+    getDetail = "https://raw.githubusercontent.com/greenSyntax/amrita-pritam-datastore/main/posts/"
 
     // App Constant
     appTitle = "📕 Amrita Preetam"
