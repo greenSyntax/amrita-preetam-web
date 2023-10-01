@@ -1,6 +1,9 @@
 {
     "status":"success",
-    "about_data": [
-        ""
-    ]
+    "about_data": {
+        "title": "Amrita Pritam",
+        "subtitle": "",
+        "image_path": "",
+        "content": ""
+    }
 }
